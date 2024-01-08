@@ -1,0 +1,159 @@
+{
+  "name": "simplecov",
+  "displayName": "Simplecov",
+  "description": "Code coverage highlighter & statistics for Ruby projects using Simplecov",
+  "version": "0.0.9",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:ruby"
+  ],
+  "publisher": "dewski",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dewski/vscode-simplecov.git"
+  },
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Simplecov",
+      "properties": {
+        "simplecov.coverShowCounts": {
+          "type": "boolean",
+          "default": false,
+          "description": "When generating code coverage, should counts be shown as --374--",
+          "scope": "resource"
+        },
+        "simplecov.coverageOptions": {
+          "type": "string",
+          "enum": [
+            "showCoveredCodeOnly",
+            "showUncoveredCodeOnly",
+            "showBothCoveredAndUncoveredCode"
+          ],
+          "default": "showBothCoveredAndUncoveredCode",
+          "description": "Use these options to control whether only covered or only uncovered code or both should be highlighted after running test coverage",
+          "scope": "resource"
+        },
+        "simplecov.coverageDecorator": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "highlight",
+                "gutter"
+              ]
+            },
+            "coveredHighlightColor": {
+              "type": "string",
+              "description": "Color in the rgba format to use to highlight covered code."
+            },
+            "uncoveredHighlightColor": {
+              "type": "string",
+              "description": "Color in the rgba format to use to highlight uncovered code."
+            },
+            "uncoveredBranchHighlightColor": {
+              "type": "string",
+              "description": "Color in the rgba format to use to highlight branch uncovered code."
+            },
+            "coveredGutterStyle": {
+              "type": "string",
+              "enum": [
+                "blockblue",
+                "blockred",
+                "blockgreen",
+                "blockyellow",
+                "slashred",
+                "slashgreen",
+                "slashblue",
+                "slashyellow",
+                "verticalred",
+                "verticalgreen",
+                "verticalblue",
+                "verticalyellow"
+              ],
+              "description": "Gutter style to indicate covered code."
+            },
+            "uncoveredGutterStyle": {
+              "type": "string",
+              "enum": [
+                "blockblue",
+                "blockred",
+                "blockgreen",
+                "blockyellow",
+                "slashred",
+                "slashgreen",
+                "slashblue",
+                "slashyellow",
+                "verticalred",
+                "verticalgreen",
+                "verticalblue",
+                "verticalyellow"
+              ],
+              "description": "Gutter style to indicate uncovered code."
+            },
+            "uncoveredBranchGutterStyle": {
+              "type": "string",
+              "enum": [
+                "blockblue",
+                "blockred",
+                "blockgreen",
+                "blockyellow",
+                "slashred",
+                "slashgreen",
+                "slashblue",
+                "slashyellow",
+                "verticalred",
+                "verticalgreen",
+                "verticalblue",
+                "verticalyellow"
+              ],
+              "description": "Gutter style to indicate branch uncovered code."
+            }
+          },
+          "additionalProperties": false,
+          "default": {
+            "type": "highlight",
+            "coveredHighlightColor": "rgba(64,128,128,0.5)",
+            "coveredGutterStyle": "blockblue",
+            "uncoveredHighlightColor": "rgba(128,64,64,0.45)",
+            "uncoveredGutterStyle": "slashyellow",
+            "uncoveredBranchHighlightColor": "rgba(128,64,64,0.25)",
+            "uncoveredBranchGutterStyle": "slashyellow"
+          },
+          "description": "This option lets you choose the way to display code coverage. Choose either to highlight the complete line or to show a decorator in the gutter. You can customize the colors for the former and the style for the latter.",
+          "scope": "resource"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "esbuild": "^0.17.19",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8"
+  }
+}
