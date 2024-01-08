@@ -2,7 +2,7 @@
   "name": "simplecov",
   "displayName": "SimpleCov",
   "description": "Code coverage highlighter & statistics for Ruby projects using SimpleCov",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -12,6 +12,7 @@
   "activationEvents": [
     "onLanguage:ruby"
   ],
+  "icon": "assets/icon.png",
   "publisher": "dewski",
   "repository": {
     "type": "git",
