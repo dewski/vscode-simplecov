@@ -1,7 +1,7 @@
 {
   "name": "simplecov",
-  "displayName": "Simplecov",
-  "description": "Code coverage highlighter & statistics for Ruby projects using Simplecov",
+  "displayName": "SimpleCov",
+  "description": "Code coverage highlighter & statistics for Ruby projects using SimpleCov",
   "version": "0.0.9",
   "engines": {
     "vscode": "^1.85.0"
@@ -26,7 +26,7 @@
         "simplecov.coverShowCounts": {
           "type": "boolean",
           "default": false,
-          "description": "When generating code coverage, should counts be shown as --374--",
+          "description": "When generating code coverage, should hit & branch coverage counts be shown inline.",
           "scope": "resource"
         },
         "simplecov.coverageOptions": {
@@ -37,7 +37,7 @@
             "showBothCoveredAndUncoveredCode"
           ],
           "default": "showBothCoveredAndUncoveredCode",
-          "description": "Use these options to control whether only covered or only uncovered code or both should be highlighted after running test coverage",
+          "description": "Use these options to control whether only covered or only uncovered code or both should be highlighted after generating a coverage report.",
           "scope": "resource"
         },
         "simplecov.coverageDecorator": {
@@ -121,13 +121,13 @@
           "default": {
             "type": "highlight",
             "coveredHighlightColor": "rgba(64,128,128,0.5)",
-            "coveredGutterStyle": "blockblue",
+            "coveredGutterStyle": "blockgreen",
             "uncoveredHighlightColor": "rgba(128,64,64,0.45)",
-            "uncoveredGutterStyle": "slashyellow",
+            "uncoveredGutterStyle": "blockred",
             "uncoveredBranchHighlightColor": "rgba(128,64,64,0.25)",
-            "uncoveredBranchGutterStyle": "slashyellow"
+            "uncoveredBranchGutterStyle": "blockred"
           },
-          "description": "This option lets you choose the way to display code coverage. Choose either to highlight the complete line or to show a decorator in the gutter. You can customize the colors for the former and the style for the latter.",
+          "description": "This option lets you style the way code coverage is displayed. Choose either to highlight the complete line or to show an indicator in the gutter.",
           "scope": "resource"
         }
       }

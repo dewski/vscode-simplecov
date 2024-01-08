@@ -18,6 +18,20 @@ The coverage is also displayed as a percentage in the editor's status bar:
 - View your test coverage percentage in the editor's status bar.
 - SimpleCov's [Branch coverage](https://github.com/simplecov-ruby/simplecov?tab=readme-ov-file#branch-coverage-ruby--25) is supported.
 
+## Configuration options
+
+- `simplecov.coverShowCounts`: When generating code coverage, should hit & branch coverage counts be shown inline. Defaults to `false`.
+- `simplecov.coverageOptions`: Use these options to control whether only covered or only uncovered code or both should be highlighted after generating a coverage report. Defaults to `showBothCoveredAndUncoveredCode`.
+- `simplecov.coverageDecorator`: This option lets you style the way code coverage is displayed. Choose either to highlight the complete line or to show an indicator in the gutter.
+  - `type`: Choose between `highlight` and `gutter`. Defaults to `highlight`.
+  - `coveredHighlightColor`: The highlight color to use for highlighting covered code.
+  - `coveredGutterStyle`: The style to use for the gutter indicator for covered code.
+  - `uncoveredHighlightColor`: The highlight color to use for highlighting uncovered code.
+  - `uncoveredGutterStyle`: The style to use for the gutter indicator for uncovered code.
+  - `uncoveredBranchHighlightColor`: The highlight color to use for highlighting uncovered branches.
+  - `uncoveredBranchGutterStyle`: The style to use for the gutter indicator for uncovered branches.
+
+
 ## Requirements
 
 This VS Code extension requires that your Ruby project uses [SimpleCov](https://github.com/simplecov-ruby/simplecov) to generate your test coverage report.
@@ -35,6 +49,11 @@ if ENV["CI"].present? || ENV["COVERAGE"].present? || ENV["REMOTE_CONTAINERS"].pr
   end
 end
 ```
+
+The extension will look for the SimpleCov profile at the following locations (and in this order):
+
+- `coverage/.resultset.json`
+- `coverage/coverage.json`
 
 ## Contributing
 

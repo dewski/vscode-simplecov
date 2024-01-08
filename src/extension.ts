@@ -50,7 +50,7 @@ let decoratorConfig: DecoratorConfig = {
   type: "highlight",
   coveredHighlightColor: "rgba(64,128,128,0.5)",
   coveredGutterStyle: "blockgreen",
-  uncoveredHighlightColor: "rgba(128,64,64,0.25)",
+  uncoveredHighlightColor: "rgba(128,64,64,0.45)",
   uncoveredGutterStyle: "blockred",
   uncoveredBranchHighlightColor: "rgba(128,64,64,0.25)",
   uncoveredBranchGutterStyle: "blockred",
