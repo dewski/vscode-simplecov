@@ -416,7 +416,6 @@ function applyCodeCoverage(editor: vscode.TextEditor | undefined) {
     coverageOptions === "showUncoveredCodeOnly" ||
     coverageOptions === "showBothCoveredAndUncoveredCode"
   ) {
-    console.log(uncoveredBranchesDecorations);
     if (decorators.type === "gutter") {
       editor.setDecorations(decorators.uncoveredGutter, uncoveredDecorations);
       editor.setDecorations(

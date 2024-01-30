@@ -64,7 +64,7 @@ type CoverageFileLine = number | null;
 
 interface Coverage {
   lines: CoverageFileLine[];
-  branches: BranchData;
+  branches?: BranchData;
 }
 
 export enum LineCoverageStatus {
@@ -188,6 +188,10 @@ export class SourceFile {
 
   _branchesFromCoverage(coverage: Coverage): Branch[] {
     const branches: Branch[] = [];
+    if (!coverage.branches) {
+      return branches;
+    }
+
     const iterator = Object.entries(coverage.branches);
 
     for (const [condition, coverageBranches] of iterator) {
@@ -300,10 +304,13 @@ export class ResultMerger {
   }
 
   static mergeBranches(
-    coverageA: BranchData,
-    coverageB: BranchData
+    coverageA?: BranchData,
+    coverageB?: BranchData
   ): BranchData {
     let merged = { ...coverageA };
+    if (!coverageB) {
+      return merged;
+    }
 
     for (const [condition, branchesInsideB] of Object.entries(coverageB)) {
       if (!merged[condition]) {
