@@ -41,6 +41,12 @@
           "description": "Use these options to control whether only covered or only uncovered code or both should be highlighted after generating a coverage report.",
           "scope": "resource"
         },
+        "simplecov.coverageDirectory": {
+          "type": "string",
+          "default": "coverage",
+          "description": "The path to the coverage directory. This is relative to the workspace root.",
+          "scope": "resource"
+        },
         "simplecov.coverageDecorator": {
           "type": "object",
           "properties": {
