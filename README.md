@@ -22,6 +22,7 @@ The coverage is also displayed as a percentage in the editor's status bar:
 
 - `simplecov.coverShowCounts`: When generating code coverage, should hit & branch coverage counts be shown inline. Defaults to `false`.
 - `simplecov.coverageOptions`: Use these options to control whether only covered or only uncovered code or both should be highlighted after generating a coverage report. Defaults to `showBothCoveredAndUncoveredCode`.
+- `simplecov.coverageDirectory`: The path to the coverage directory. This is relative to the workspace root. Defaults to `coverage`.
 - `simplecov.coverageDecorator`: This option lets you style the way code coverage is displayed. Choose either to highlight the complete line or to show an indicator in the gutter.
   - `type`: Choose between `highlight` and `gutter`. Defaults to `highlight`.
   - `coveredHighlightColor`: The highlight color to use for highlighting covered code.
