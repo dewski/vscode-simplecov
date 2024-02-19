@@ -84,8 +84,9 @@ export function addWorkspaceFileSystemWatchers(
   context: vscode.ExtensionContext
 ) {
   const coverageDirectory = getConfig().get("coverageDirectory") as string;
-  const jsonWatcher =
-    vscode.workspace.createFileSystemWatcher(`**/${coverageDirectory}/*.json`);
+  const jsonWatcher = vscode.workspace.createFileSystemWatcher(
+    `**/${coverageDirectory}/*.json`
+  );
 
   jsonWatcher.onDidChange((uri) => {
     outputChannel.appendLine(
@@ -449,7 +450,11 @@ function parseCoverageRanges() {
 
     const possiblePaths = [
       path.join(workspaceFolder.uri.fsPath, coverageDirectory, "coverage.json"),
-      path.join(workspaceFolder.uri.fsPath, coverageDirectory, ".resultset.json"),
+      path.join(
+        workspaceFolder.uri.fsPath,
+        coverageDirectory,
+        ".resultset.json"
+      ),
     ];
 
     const coverageJsonPath = possiblePaths.find(fs.existsSync);
@@ -457,7 +462,9 @@ function parseCoverageRanges() {
       outputChannel.appendLine(
         `No coverage file found in ${possiblePaths.join(", ")}`
       );
-      vscode.window.showInformationMessage("No coverage file found!");
+      vscode.window.showInformationMessage(
+        `No coverage file found at ${possiblePaths.join(" or ")}`
+      );
       return;
     }
 
