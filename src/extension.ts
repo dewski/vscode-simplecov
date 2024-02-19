@@ -83,8 +83,9 @@ export function deactivate() {
 export function addWorkspaceFileSystemWatchers(
   context: vscode.ExtensionContext
 ) {
+  const coverageDirectory = getConfig().get("coverageDirectory") as string;
   const jsonWatcher =
-    vscode.workspace.createFileSystemWatcher("**/coverage/*.json");
+    vscode.workspace.createFileSystemWatcher(`**/${coverageDirectory}/*.json`);
 
   jsonWatcher.onDidChange((uri) => {
     outputChannel.appendLine(
@@ -434,6 +435,7 @@ function applyCodeCoverage(editor: vscode.TextEditor | undefined) {
 }
 
 function parseCoverageRanges() {
+  const coverageDirectory = getConfig().get("coverageDirectory") as string;
   outputChannel.appendLine(`Parsing coverage ranges`);
 
   coverageFiles = new Map<string, SourceFile>();
@@ -446,8 +448,8 @@ function parseCoverageRanges() {
     const workspaceFolder = workspaceFolders[0];
 
     const possiblePaths = [
-      path.join(workspaceFolder.uri.fsPath, "coverage", "coverage.json"),
-      path.join(workspaceFolder.uri.fsPath, "coverage", ".resultset.json"),
+      path.join(workspaceFolder.uri.fsPath, coverageDirectory, "coverage.json"),
+      path.join(workspaceFolder.uri.fsPath, coverageDirectory, ".resultset.json"),
     ];
 
     const coverageJsonPath = possiblePaths.find(fs.existsSync);
