@@ -462,9 +462,6 @@ function parseCoverageRanges() {
       outputChannel.appendLine(
         `No coverage file found in ${possiblePaths.join(", ")}`
       );
-      vscode.window.showInformationMessage(
-        `No coverage file found at ${possiblePaths.join(" or ")}`
-      );
       return;
     }
 
