@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.0.5] - 2024-03-23
+
+### Fixed
+
+- Don't present information message when no coverage file found ([#8](https://github.com/dewski/vscode-simplecov/pull/8)).
+
 ## [0.0.4] - 2024-02-18
 
 ### Added
