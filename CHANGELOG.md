@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.0.6] - 2024-07-15
+
+### Fixed
+
+- Update coverage percentage to use `Number.toFixed` instead of `Number.toPrecision` ([#11](https://github.com/dewski/vscode-simplecov/pull/11)).
+
 ## [0.0.5] - 2024-03-23
 
 ### Fixed
