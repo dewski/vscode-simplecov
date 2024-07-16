@@ -376,7 +376,7 @@ function applyCodeCoverage(editor: vscode.TextEditor | undefined) {
     statusIcon = "$(alert)";
   }
   statusBarItem.tooltip = `${stats.totalLines} relevant lines. ${stats.coveredLines} covered, ${stats.uncoveredLines} missed.`;
-  statusBarItem.text = `${statusIcon} ${stats.percentage.toPrecision(2)}%`;
+  statusBarItem.text = `${statusIcon} ${stats.percentage.toFixed()}%`;
   statusBarItem.show();
 
   // Line decorators
