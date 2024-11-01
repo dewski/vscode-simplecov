@@ -138,7 +138,21 @@
           "scope": "resource"
         }
       }
-    }
+    },
+    "commands": [
+      {
+        "command": "simplecov.coverage.toggle",
+        "title": "SimpleCov: Toggle Coverage"
+      },
+      {
+        "command": "simplecov.coverage.apply",
+        "title": "SimpleCov: Apply Coverage"
+      },
+      {
+        "command": "simplecov.coverage.remove",
+        "title": "SimpleCov: Remove Coverage"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
