@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.0.7] - 2024-11-01
+
+### Added
+
+- Add commands to toggle, apply, and remove coverage ([#14](https://github.com/dewski/vscode-simplecov/pull/14)).
+
 ## [0.0.6] - 2024-07-15
 
 ### Fixed
