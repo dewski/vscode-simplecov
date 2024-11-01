@@ -68,11 +68,49 @@ export function activate(context: vscode.ExtensionContext) {
   initCoverageDecorators(context);
 
   addWorkspaceFileSystemWatchers(context);
+  addExtensionCommandListeners(context);
   addOnDidChangeConfigListeners(context);
   addOnChangeActiveTextEditorListeners(context);
   addOnSaveTextDocumentListeners(context);
 
   console.debug("simplecov extension activated");
+}
+
+function addExtensionCommandListeners(context: vscode.ExtensionContext) {
+  let toggleCoverageCommand = vscode.commands.registerCommand(
+    "simplecov.coverage.toggle",
+    toggleCoverage
+  );
+
+  let applyCoverageCommand = vscode.commands.registerCommand(
+    "simplecov.coverage.apply",
+    applyCoverage
+  );
+
+  let removeCoverageCommand = vscode.commands.registerCommand(
+    "simplecov.coverage.remove",
+    clearCoverage
+  );
+
+  context.subscriptions.push(toggleCoverageCommand);
+  context.subscriptions.push(applyCoverageCommand);
+  context.subscriptions.push(removeCoverageCommand);
+}
+
+function toggleCoverage() {
+  if (isCoverageApplied) {
+    console.debug(`toggleCoverage: removing coverage`);
+    clearCoverage();
+  } else {
+    console.debug(`toggleCoverage: applying coverage`);
+    applyCoverage();
+  }
+}
+
+function applyCoverage() {
+  console.debug(`applyCoverage: applying coverage`);
+  reloadCoverage();
+  vscode.window.visibleTextEditors.forEach(applyCodeCoverage);
 }
 
 // This method is called when your extension is deactivated
@@ -305,7 +343,6 @@ function clearCoverage() {
 }
 
 function reloadCoverage() {
-  console.debug("clearCoverage");
   outputChannel.appendLine(`Reloading coverage`);
 
   clearCoverage();
@@ -339,6 +376,7 @@ function removeCodeCoverageOnFileSave(e: vscode.TextDocument) {
 
 function applyCodeCoverage(editor: vscode.TextEditor | undefined) {
   if (!editor) {
+    console.debug(`applyCodeCoverage: no active text editor`);
     return;
   }
 

@@ -32,6 +32,11 @@ The coverage is also displayed as a percentage in the editor's status bar:
   - `uncoveredBranchHighlightColor`: The highlight color to use for highlighting uncovered branches.
   - `uncoveredBranchGutterStyle`: The style to use for the gutter indicator for uncovered branches.
 
+## Commands
+
+- `simplecov.coverage.toggle`: Toggle the display of code coverage.
+- `simplecov.coverage.apply`: Apply the coverage to the currently active file.
+- `simplecov.coverage.remove`: Remove the coverage from the currently active file.
 
 ## Requirements
 
